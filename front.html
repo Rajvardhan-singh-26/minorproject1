@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NUTRICAREhub - Personalized Nutrition</title>
+    
+    <!-- Styles -->
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: rgba(255, 255, 255, 0.8); /* Transparent effect */
+            color: #333;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: rgba(39, 174, 96, 0.9); /* Green transparent */
+            padding: 20px 0;
+            color: white;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar h1 {
+            font-size: 24px;
+        }
+
+        .navbar ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .navbar ul li {
+            margin: 0 15px;
+        }
+
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .navbar ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .btn-login {
+            background-color: #1abc9c;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .btn-login:hover {
+            background-color: #16a085;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-image: url('https://em360tech.com/sites/default/files/inline-images/types-of-health-technology.jpg');
+            background-size: cover;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .hero h2 {
+            font-size: 48px;
+            color: #2ecc71;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin: 20px 0;
+            color: #34495e;
+        }
+
+        .btn-primary {
+            background-color: #2ecc71;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .btn-primary:hover {
+            background-color: #27ae60;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 50px 0;
+            background-color: #ecf0f1;
+            text-align: center;
+        }
+
+        .services h2 {
+            font-size: 36px;
+            color: #2ecc71;
+            margin-bottom: 30px;
+        }
+
+        .service-cards {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.8); /* Transparent cards */
+            padding: 20px;
+            border-radius: 10px;
+            width: 30%;
+            margin: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card i {
+            font-size: 40px;
+            color: #2ecc71;
+        }
+
+        .card h3 {
+            margin: 20px 0;
+        }
+
+        .card p {
+            color: #777;
+        }
+
+        /* FAQ Section */
+        .faqs {
+            padding: 50px 0;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        .faqs h2 {
+            font-size: 36px;
+            color: #27ae60;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .faq-item {
+            margin-bottom: 30px;
+            background-color: rgba(255, 255, 255, 0.8); /* Transparent FAQ */
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+
+        .faq-item h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #2ecc71;
+        }
+
+        .faq-item p {
+            color: #777;
+            display: none;
+        }
+
+        .faq-item.active p {
+            display: block;
+        }
+
+        /* Search Box Section */
+        .search-box {
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        .search-box input[type="text"] {
+            width: 50%;
+            padding: 10px;
+            border: 2px solid #2ecc71;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .search-box button {
+            padding: 10px 20px;
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .search-box button:hover {
+            background-color: #27ae60;
+        }
+
+        .results-box {
+            display: none;
+            margin-top: 20px;
+            background-color: rgba(255, 255, 255, 0.9); /* Transparent */
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            width: 50%;
+            margin: 0 auto;
+        }
+
+        .results-box h3 {
+            color: #27ae60;
+        }
+
+        .results-box ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .results-box ul li {
+            margin-bottom: 10px;
+        }
+
+        /* Recommendations Section */
+        .recommendations {
+            padding: 50px 0;
+            text-align: center;
+            background-color: #ecf0f1;
+        }
+
+        .recommendations h2 {
+            font-size: 36px;
+            color: #27ae60;
+            margin-bottom: 30px;
+        }
+
+        .recommendation-cards {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .card-hover {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .card-hover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-hover .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform: translateY(20px);
+        }
+
+        .card-hover:hover {
+            transform: scale(1.05);
+        }
+
+        .card-hover:hover .overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card-hover .overlay h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .card-hover .overlay p {
+            font-size: 14px;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: rgba(39, 174, 96, 0.9);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        /* Login Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+        }
+
+        .modal-content input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .btn-submit {
+            padding: 10px 20px;
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-submit:hover {
+            background-color: #27ae60;
+        }
+
+        .close-modal {
+            cursor: pointer;
+            color: #2ecc71;
+            float: right;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <h1>NutriCareHub</h1>
+            <ul>
+                <li><a href="http://127.0.0.1:5500/index.html/NUTRICAREMODERN5.html#about">More</a></li>
+                <li><a href="http://127.0.0.1:5500/index.html/NUTRICAREMODERN6.html">About</a></li>
+                <li><a href="http://127.0.0.1:5500/index.html/NUTRICAREMODERN3.html">FAQs</a></li>
+                <li><a href="http://127.0.0.1:5500/index.html/NUTRICAREMOERN4.html">Contact</a></li>
+            </ul>
+            <button class="btn-login" onclick="openModal()">Login</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h2>Personalized Nutrition for Better Health</h2>
+        <p>Get tailored nutrition advice based on your health conditions.</p>
+        <a href="#services" class="btn-primary">Get Started</a>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <h2>What We Offer</h2>
+        <div class="service-cards">
+            <div class="card">
+                <i class="fas fa-apple-alt"></i>
+                <h3>Customized Diet Plans</h3>
+                <p>Personalized meal plans tailored to your health needs.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-heartbeat"></i>
+                <h3>Health Monitoring</h3>
+                <p>Track your progress and stay on top of your health.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-leaf"></i>
+                <h3>Natural Remedies</h3>
+                <p>Learn about natural foods that support healing and wellness.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Box -->
+    <section class="search-box">
+        <h2>Find Nutrition for Your Symptoms</h2>
+        <input type="text" id="symptomInput" placeholder="Enter your symptoms...">
+        <button onclick="searchSymptom()">Search</button>
+
+        <div class="results-box" id="resultsBox">
+            <h3>Recommended Diseases & Diet</h3>
+            <ul id="resultsList">
+                <!-- Search results will be displayed here -->
+            </ul>
+        </div>
+    </section>
+
+    <!-- Common Diseases & Diet Recommendations -->
+    <section class="recommendations">
+        <h2>Common Diseases & Diet Recommendations</h2>
+        <div class="recommendation-cards">
+            <div class="card-hover">
+                <img src="https://5714482.fs1.hubspotusercontent-na1.net/hubfs/5714482/Blog%20Photos/ME_CFS%20option%202.jpeg" alt="Fatigue" alt="Fatigue">
+                <div class="overlay">
+                    <h3>Chronic Fatigue Syndrome</h3>
+                    <p>Foods rich in antioxidants, fruits, and vegetables.</p>
+                </div>
+            </div>
+            <div class="card-hover">
+                <img src="https://saiayush.in/wp-content/uploads/2023/05/Migraine-Treatments-3-Sai-Ayush-Ayurveda-Hyderabad.jpg" alt="Migraine">
+                <div class="overlay">
+                    <h3>Migraine</h3>
+                    <p>Magnesium-rich foods, leafy greens, and nuts.</p>
+                </div>
+            </div>
+            <div class="card-hover">
+                <img src="https://etimg.etb2bimg.com/photo/88295731.cms" alt="Arthritis">
+                <div class="overlay">
+                    <h3>Arthritis</h3>
+                    <p>Anti-inflammatory foods such as turmeric, omega-3 rich fish, and leafy greens.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faqs">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-item">
+            <h3>What is personalized nutrition?</h3>
+            <p>Personalized nutrition tailors diet plans based on individual health conditions, preferences, and goals.</p>
+        </div>
+        <div class="faq-item">
+            <h3>How do I get a personalized diet plan?</h3>
+            <p>Simply enter your health details, and we'll provide a diet plan suited to your specific needs.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Is it free to use NutriCareHub?</h3>
+            <p>Yes, our basic services are free, but we offer premium features for more personalized plans.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 NutriCareHub. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h3>Login</h3>
+            <input type="email" placeholder="Email">
+            <input type="password" placeholder="Password">
+            <button class="btn-submit">Login</button>
+        </div>
+    </div>
+
+    <!-- JavaScript for FAQ Toggle -->
+    <script>
+        // FAQ Toggle Functionality
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            item.addEventListener('click', () => {
+                item.classList.toggle('active');
+            });
+        });
+
+        // Symptom and Diet Data
+        const diseaseData = {
+            "migraine": {
+                disease: "Migraine",
+                diet: "Magnesium-rich foods, leafy greens, and nuts."
+            },
+            "fatigue": {
+                disease: "Chronic Fatigue Syndrome",
+                diet: "Foods rich in antioxidants, fruits, and vegetables."
+            },
+            "arthritis": {
+                disease: "Arthritis",
+                diet: "Anti-inflammatory foods such as turmeric, omega-3 rich fish, and leafy greens."
+            },
+            "diabetes": {
+                disease: "Diabetes",
+                diet: "Foods with low glycemic index, high-fiber vegetables, and lean proteins."
+            },
+            "hypertension": {
+                disease: "Hypertension",
+                diet: "Low-sodium diet, leafy greens, and foods rich in potassium."
+            }
+        };
+
+        // Search Symptom Functionality
+        function searchSymptom() {
+            const symptomInput = document.getElementById('symptomInput').value.toLowerCase();
+            const resultsBox = document.getElementById('resultsBox');
+            const resultsList = document.getElementById('resultsList');
+            resultsList.innerHTML = '';
+
+            if (diseaseData[symptomInput]) {
+                const result = diseaseData[symptomInput];
+                resultsList.innerHTML = `
+                    <li><strong>Disease:</strong> ${result.disease}</li>
+                    <li><strong>Recommended Diet:</strong> ${result.diet}</li>
+                `;
+                resultsBox.style.display = 'block';
+            } else {
+                resultsList.innerHTML = '<li>No results found. Try another symptom.</li>';
+                resultsBox.style.display = 'block';
+            }
+        }
+
+        // Modal Functions
+        function openModal() {
+            document.getElementById('loginModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('loginModal').style.display = 'none';
+        }
+    </script>
+    
+    
+    <!-- JavaScript for Toggle Sections -->
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.content-section, .hero, .faqs').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+        }
+
+        function openModal() {
+            document.getElementById('loginModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('loginModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
